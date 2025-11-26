@@ -1,0 +1,37 @@
+Лабораторна робота — Інтеграція Tailwind CSS у проєкт Vue 3
+
+Кроки, які я виконав:
+- Згенерував структуру проєкту (ручна мінімальна scaffold): `package.json`, `vite.config.ts`, `tsconfig.json`, `index.html`.
+- Додав Tailwind Vite plugin (`@tailwindcss/vite`) та `tailwindcss` у `devDependencies`.
+- Створив `src/assets/css/index.css` з одним імпортом `@import "tailwindcss"`.
+- Імпортував CSS у `src/main.ts`.
+- Створив маршрути та сторінки: `HomeView.vue`, `AboutView.vue`, `ContactView.vue` (Dating page).
+- Створив компонент `UserCard.vue` та використав у `ContactView.vue`.
+- Перерефакторив стилі компонентів на utility-класи Tailwind (всі стилі — в шаблонах).
+
+Як реалізовано умовні стилі (для `isActive`) у `UserCard.vue`:
+- Замість `<style scoped>` ми застосовуємо Tailwind-класи прямо в `class` і використовуємо `:class` для умовної підміни клаcів.
+- Приклад: `:class="isActive ? 'border-green-500 bg-green-50' : 'border-gray-300 bg-white'"`.
+- Для тексту також використовується `:class="isActive ? 'text-green-700' : 'text-gray-500'"`.
+
+Приклад помилки TypeScript (для звіту):
+- Якщо у `ContactView.vue` пробувати передати число у місце boolean, наприклад `<UserCard username="Test" :isActive="1" />`, компілятор TypeScript / Vue покаже помилку типізації — очікується `boolean`, знайдено `number`.
+  (Коментар на сторінці або в коді: // Error: Type 'number' is not assignable to type 'boolean')
+
+Переваги utility-first (Tailwind) порівняно з `<style scoped>`:
+- Плюси:
+  - Швидка побудова інтерфейсу без написання нових CSS-класів.
+  - Менше CSS-файлів та простіша підтримка, менше дублювання стилів.
+  - Легко використати умовні стилі через `:class`.
+  - Гарна сумісність з dark-mode (`dark:` префікси).
+- Мінуси:
+  - HTML/Vue-шаблони можуть стати "шумними" через багато утилітарних класів.
+  - Крива навичок — потрібно знати набір утиліт Tailwind.
+  - Для дуже специфічних стилів іноді зручніше використовувати окремі класи або компоненти з CSS.
+
+Висновки:
+- Я інтегрував Tailwind у проєкт Vue 3 + Vite та провів рефакторинг стилів у utility-first підхід.
+- Компоненти використовують типізацію через `defineProps` (TypeScript) і умовні класи Tailwind для стилізації.
+
+
+(Зробіть `npm install` у корені проєкту та `npm run dev`, щоб побачити результат локально.)
