@@ -10,6 +10,7 @@ import { RouterLink, RouterView } from 'vue-router'
         <RouterLink to="/about" class="text-blue-600 hover:underline">About</RouterLink>
         <RouterLink to="/contact" class="text-blue-600 hover:underline">Dating</RouterLink>
         <RouterLink to="/meet" class="text-blue-600 hover:underline">Meet</RouterLink>
+        <RouterLink to="/dating-app" class="text-blue-600 hover:underline">Create Profile</RouterLink>
       </nav>
     </div>
   </header>

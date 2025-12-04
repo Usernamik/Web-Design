@@ -22,6 +22,12 @@ const routes = [
     name: 'meet',
     component: () => import('../views/dating/MeetView.vue')
   }
+  ,
+  {
+    path: '/dating-app',
+    name: 'dating-app',
+    component: () => import('../views/dating/DatingApp.vue')
+  }
 ]
 
 const router = createRouter({
